@@ -20,9 +20,9 @@ class TwigOverrideNodeVisitor extends \Twig_BaseNodeVisitor {
   protected function doLeaveNode(\Twig_Node $node, \Twig_Environment $env) {
 
     // Replace:
-    // {% embed ... %} with {% embed twig_override(...) %}
+    // {% embed ... %} with {% embed twig_override(...) %}.
     // and:
-    // {% extends ... %} with {% extends twig_override(...) %}
+    // {% extends ... %} with {% extends twig_override(...) %}.
     if ($node instanceof \Twig_Node_Module && $node->hasNode('parent')) {
       $line = $node->getTemplateLine();
       $with = new \Twig_Node_Expression_Constant(NULL, $line);
@@ -34,10 +34,11 @@ class TwigOverrideNodeVisitor extends \Twig_BaseNodeVisitor {
     }
 
     // Replace
-    // {% include 1 with 2 %} with {% include twig_override(1) with twig_override_parameters(2) %}
-    // and 
-    // {% embed 1 with 2 %} with {% embed 1 with twig_override_parameters(2) %}
-    else if ($node instanceof \Twig_Node_Include) {
+    // {% include 1 with 2 %}
+    // with {% include twig_override(1) with twig_override_parameters(2) %}.
+    // and
+    // {% embed 1 with 2 %} with {% embed 1 with twig_override_parameters(2) %}.
+    elseif ($node instanceof \Twig_Node_Include) {
       $line = $node->getTemplateLine();
       $with = $node->hasNode('variables') ? $node->getNode('variables') : new \Twig_Node_Expression_Constant(NULL, $line);
       $only = new \Twig_Node_Expression_Constant($node->hasAttribute('only') ? $node->getAttribute('only') : FALSE, $line);

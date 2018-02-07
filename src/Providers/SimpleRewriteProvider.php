@@ -5,7 +5,7 @@ namespace TwigOverride\Providers;
 /**
  * A provider that performs simple mapping from one set of templates to another.
  *
- * eg.
+ * Eg.
  * "{% include '@test1.twig' %}" => "{% include '@test2.twig' %}"
  */
 class SimpleRewriteProvider implements ProviderInterface {
