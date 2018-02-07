@@ -1,0 +1,29 @@
+{
+    "name": "christophersmith262/twig_override",
+    "description": "Allows twig templates and arguments to be overridden at run-time.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris Smith",
+            "email": "christophersmith262@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "~1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5",
+        "phpspec/prophecy": "^1.7"
+    },
+    "autoload": {
+      "psr-4": {
+        "TwigOverride\\": "src"
+      }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "TwigOverride\\Test\\": "test/src"
+      }
+    }
+}
