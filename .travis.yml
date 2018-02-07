@@ -1,0 +1,25 @@
+
+language: php
+
+sudo: false
+
+cache:
+    directories:
+        - vendor
+        - $HOME/.composer/cache/files
+
+matrix:
+    include:
+        - php: 7.0
+        - php: nightly
+    fast_finish: true
+
+install:
+    - travis_retry composer install
+
+script:
+  ./vendor/bin/phpunit --coverage-clover './test/coverage/clover.xml'
+
+after_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover './test/coverage/clover.xml'
