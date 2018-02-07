@@ -24,6 +24,13 @@ class TwigOverrideExtension extends \Twig_Extension {
   const PARAMETER_OVERRIDE_FUNCTION = '_twig_override_parameters';
 
   /**
+   * A list of override providers to apply.
+   *
+   * @var \TwigOverride\Providers\ProviderInterface[]
+   */
+  protected $providers;
+
+  /**
    * Creates a twig override extension.
    *
    * @param \TwigOverride\Providers\ProviderInterface[] $providers

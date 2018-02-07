@@ -71,6 +71,9 @@ class TwigOverrideNodeVisitorTest extends TestCase {
       $check_template_node = NULL;
       $check_variables_node = 'variables';
     }
+    else {
+      throw new \InvalidArgumentException('Invalid Node Type');
+    }
     $result_node = $this->visitor->leaveNode($node, $this->twigEnv);
 
     $expected_args = new \Twig_Node([
@@ -153,7 +156,7 @@ class TwigOverrideNodeVisitorTest extends TestCase {
    * @return \Twig_Node_Include
    *   The simulated include node.
    */
-  protected function createInclude($template_name, array $with, $only) {
+  protected function createInclude($template_name, array $with = NULL, $only) {
     return new \Twig_Node_Include(
       new \Twig_Node_Expression_Constant($template_name, 1),
       $with ? new \Twig_Node_Expression_Constant($with, 1) : NULL,
@@ -171,7 +174,7 @@ class TwigOverrideNodeVisitorTest extends TestCase {
    * @return \Twig_Node_Embed
    *   The simulated embed node.
    */
-  protected function createEmbed($template_name, array $with, $only) {
+  protected function createEmbed($template_name, array $with = NULL, $only) {
     return new \Twig_Node_Embed(
       $template_name,
       0,
