@@ -24,7 +24,7 @@ class TwigOverrideNodeVisitor extends \Twig_BaseNodeVisitor {
     // and:
     // {% extends ... %} with {% extends twig_override(...) %}
     if ($node instanceof \Twig_Node_Module && $node->hasNode('parent')) {
-      $line = $node->getLine();
+      $line = $node->getTemplateLine();
       $with = new \Twig_Node_Expression_Constant(NULL, $line);
       $template_name = $node->getNode('parent');
       $only = new \Twig_Node_Expression_Constant(FALSE, $line);
@@ -38,7 +38,7 @@ class TwigOverrideNodeVisitor extends \Twig_BaseNodeVisitor {
     // and 
     // {% embed 1 with 2 %} with {% embed 1 with twig_override_parameters(2) %}
     else if ($node instanceof \Twig_Node_Include) {
-      $line = $node->getLine();
+      $line = $node->getTemplateLine();
       $with = $node->hasNode('variables') ? $node->getNode('variables') : new \Twig_Node_Expression_Constant(NULL, $line);
       $only = new \Twig_Node_Expression_Constant($node->hasAttribute('only') ? $node->getAttribute('only') : FALSE, $line);
       $_context = new \Twig_Node_Expression_Name('_context', $line);
@@ -46,7 +46,7 @@ class TwigOverrideNodeVisitor extends \Twig_BaseNodeVisitor {
       // The order of these checks is important since Twig_Node_Embed is a
       // subclass of Twig_Node_Include.
       if ($node instanceof \Twig_Node_Embed) {
-        $template_name = new \Twig_Node_Expression_Constant($node->getAttribute('filename'), $line);
+        $template_name = new \Twig_Node_Expression_Constant($node->getAttribute('name'), $line);
         $arguments = new \Twig_Node([$template_name, $only, $with, $_context]);
       }
       else {
