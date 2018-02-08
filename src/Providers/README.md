@@ -1,10 +1,10 @@
-[![Build Status](https://travis-ci.org/christophersmith262/twig_override.svg?branch=2.x)](https://travis-ci.org/christophersmith262/twig_override)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/christophersmith262/twig_override/badges/quality-score.png?b=2.x)](https://scrutinizer-ci.com/g/christophersmith262/twig_override/?branch=2.x)
-[![Code Coverage](https://scrutinizer-ci.com/g/christophersmith262/twig_override/badges/coverage.png?b=2.x)](https://scrutinizer-ci.com/g/christophersmith262/twig_override/?branch=2.x)
+[![Build Status](https://travis-ci.org/christophersmith262/twig_override.svg?branch=1.x)](https://travis-ci.org/christophersmith262/twig_override)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/christophersmith262/twig_override/badges/quality-score.png?b=1.x)](https://scrutinizer-ci.com/g/christophersmith262/twig_override/?branch=1.x)
+[![Code Coverage](https://scrutinizer-ci.com/g/christophersmith262/twig_override/badges/coverage.png?b=1.x)](https://scrutinizer-ci.com/g/christophersmith262/twig_override/?branch=1.x)
 
 # TwigOverride
 
-TwigOverride provides a [twig extension](https://twig.symfony.com/doc/2.x/advanced.html#creating-an-extension) that can help with:
+TwigOverride provides a [twig extension](https://twig.symfony.com/doc/1.x/advanced.html#creating-an-extension) that can help with:
 
 - Preprocessing the arguments passed to a twig template anywhere that template
   is referenced.
